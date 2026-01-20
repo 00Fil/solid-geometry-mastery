@@ -11,9 +11,20 @@ services:
         condition: on-failure
         delay: 5s
         max_attempts: 3
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.mate.rule=Host(`mate.lotus-dev.it`)"
+        - "traefik.http.routers.mate.entrypoints=websecure"
+        - "traefik.http.routers.mate.tls.certresolver=letsencrypt"
+        - "traefik.http.services.mate.loadbalancer.server.port=3000"
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://localhost:3000"]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 40s
+
+networks:
+  default:
+    external: true
+    name: dokploy-network
