@@ -410,19 +410,21 @@ $$\\boxed{h = \\frac{4}{3}r}$$`,
         title: 'Es. 164 - Parallelepipedo',
         category: 'Prisma',
         difficulty: 'Facile',
-        problemStatement: `Da un cubo di lato $a$ si vuole ricavare un parallelepipedo rettangolo con base quadrata e volume massimo. Trova le dimensioni.`,
-        targetResults: ['lato base = $a$', 'altezza = $\\frac{a}{2}$'],
+        problemStatement: `Considera un parallelepipedo rettangolo i cui spigoli di base misurano 8 e 6 e la cui altezza misura $x$. Da tale parallelepipedo viene tolto un cubo il cui spigolo misura $x$. Per quale valore di $x$ il prisma che ne risulta ha volume massimo?`,
+        targetResults: ['$x = 4$'],
         variables: [
-            { name: 'Lato Cubo', symbol: 'a', description: 'Dato', color: 'text-rose-600' },
-            { name: 'Lato Base', symbol: 'x', description: 'Incognita', color: 'text-blue-600' },
-            { name: 'Altezza', symbol: 'h', description: 'Dipende da x', color: 'text-amber-600' }
+            { name: 'Base 1', symbol: '8', description: 'Dato', color: 'text-rose-600' },
+            { name: 'Base 2', symbol: '6', description: 'Dato', color: 'text-emerald-600' },
+            { name: 'Altezza/Lato cubo', symbol: 'x', description: 'Incognita', color: 'text-blue-600' }
         ],
         visualizationType: 'generic-section',
         steps: [
-            { id: '1', title: 'Vincolo', description: `Il parallelepipedo deve stare dentro il cubo.\n\nBase quadrata lato $x$, altezza $h$.\n\nVincolo: $x \\le a$ e $h \\le a$`, notebookExplanation: `$x \\le a$, $h \\le a$`, tags: [{ type: 'trick', label: 'Vincoli' }] },
-            { id: '2', title: 'Relazione', description: `Se il parallelepipedo "poggia" sulla faccia del cubo, allora:\n- Lato base $x = a$ (usa tutta la faccia)\n- Altezza $h$ può variare da 0 a $a$`, notebookExplanation: `$x = a$ fisso\n$0 < h \\le a$`, tags: [{ type: 'trick', label: 'Geometria' }] },
-            { id: '3', title: 'Volume', description: `$V = x^2 \\cdot h = a^2 \\cdot h$\n\nIl volume cresce con $h$, quindi il massimo si ha per $h = a$.\n\n**Il parallelepipedo di volume massimo è il cubo stesso!**`, notebookExplanation: `$V = a^2 h$\nMax per $h = a$\n→ È il cubo!`, tags: [{ type: 'formula', label: 'Volume' }] },
-            { id: '4', title: 'Interpretazione alternativa', description: `Se invece il problema intende tagliare il cubo:\nBase $x \\times x$, altezza $h = a - x$\n\n$V(x) = x^2(a-x) = ax^2 - x^3$\n\n$V'(x) = 2ax - 3x^2 = x(2a-3x)$\n\n$x = \\frac{2a}{3}$, $h = \\frac{a}{3}$`, notebookExplanation: `$x = \\frac{2a}{3}$\n$h = \\frac{a}{3}$`, tags: [{ type: 'trick', label: 'Alternativa' }] }
+            { id: '1', title: 'Volume iniziale', description: `Parallelepipedo: $V_{par} = 8 \\cdot 6 \\cdot x = 48x$`, notebookExplanation: `$V_{par} = 48x$`, tags: [{ type: 'formula', label: 'Volume' }] },
+            { id: '2', title: 'Volume cubo', description: `Cubo tolto: $V_{cubo} = x^3$`, notebookExplanation: `$V_{cubo} = x^3$`, tags: [{ type: 'formula', label: 'Cubo' }] },
+            { id: '3', title: 'Volume risultante', description: `$V(x) = 48x - x^3$\n\n**Dominio:** $0 < x \\le 6$ (il cubo deve stare dentro)`, notebookExplanation: `$V(x) = 48x - x^3$\n$0 < x \\le 6$`, tags: [{ type: 'formula', label: 'V(x)' }] },
+            { id: '4', title: 'Derivata', description: `$V'(x) = 48 - 3x^2$`, notebookExplanation: `$V' = 48 - 3x^2$`, tags: [{ type: 'formula', label: 'Derivata' }] },
+            { id: '5', title: 'Risolvo', description: `$48 - 3x^2 = 0$\n$x^2 = 16$\n$x = 4$`, notebookExplanation: `$x^2 = 16$\n$x = 4$`, tags: [{ type: 'formula', label: 'V\'=0' }] },
+            { id: '6', title: 'Risposta', description: `$$x = 4$$`, notebookExplanation: `$$\\boxed{x = 4}$$`, tags: [{ type: 'trick', label: 'Risultato' }] }
         ]
     },
     {
@@ -563,6 +565,246 @@ $$\\boxed{h = \\frac{4}{3}r}$$`,
             { id: '3', title: 'Nota importante', description: `Se la base è fissa (cerchio massimo), allora $r$ è costante.\n\nIl volume è lineare in $h$, quindi cresce sempre con $h$.\n\n**Non c'è massimo finito!**\n\nIl problema probabilmente intende un vincolo aggiuntivo (es. vertice sulla semisfera).`, notebookExplanation: `Volume lineare in h → no max`, tags: [{ type: 'trick', label: 'Analisi' }] },
             { id: '4', title: 'Caso vertice su semisfera', description: `Se il vertice deve stare sulla semisfera:\n$(\\frac{L}{2})^2 + h^2 = r^2$\n$(\\frac{r\\sqrt{2}}{2})^2 + h^2 = r^2$\n$\\frac{r^2}{2} + h^2 = r^2$\n$h = \\frac{r}{\\sqrt{2}}$`, notebookExplanation: `$h = \\frac{r}{\\sqrt{2}} = \\frac{r\\sqrt{2}}{2}$`, tags: [{ type: 'formula', label: 'Vincolo' }] },
             { id: '5', title: 'Risposta', description: `Con il vincolo del vertice sulla semisfera:\n$$h = \\frac{r\\sqrt{2}}{2}$$`, notebookExplanation: `$$\\boxed{h = \\frac{r\\sqrt{2}}{2}}$$`, tags: [{ type: 'trick', label: 'Risultato' }] }
+        ]
+    },
+    // ========== NUOVI ESERCIZI 171-185 ==========
+    {
+        id: '171-cono-circ-sup-lat',
+        title: 'Es. 171 - Sup. Lat. Min Cono Circ.',
+        category: 'Sfera',
+        difficulty: 'Difficile',
+        problemStatement: `Determina l'area minima della superficie laterale di un cono retto circoscritto a una sfera di raggio $r$.`,
+        targetResults: ['$S_L = \\pi r^2(3+2\\sqrt{2})$'],
+        variables: [
+            { name: 'Raggio Sfera', symbol: 'r', description: 'Dato', color: 'text-blue-600' },
+            { name: 'Altezza', symbol: 'h', description: 'Incognita', color: 'text-amber-600' }
+        ],
+        visualizationType: 'cone-circumscribed-sphere',
+        steps: [
+            { id: '1', title: 'Setup', description: `Cono circoscritto a sfera: la sfera è tangente alla superficie laterale.\n\nSimilitudine: $\\frac{r}{h-r} = \\frac{y}{\\ell}$`, notebookExplanation: `Similitudine triangoli`, tags: [{ type: 'trick', label: 'Setup' }] },
+            { id: '2', title: 'Formula Sup. Lat.', description: `$S_L = \\pi y \\ell$\n\nDove $\\ell$ = apotema`, notebookExplanation: `$S_L = \\pi y \\ell$`, tags: [{ type: 'formula', label: 'Sup. Lat.' }] },
+            { id: '3', title: 'Calcoli e derivata', description: `Dopo i calcoli si ottiene il minimo per $h = r(1+\\sqrt{2})$`, notebookExplanation: `$h = r(1+\\sqrt{2})$`, tags: [{ type: 'formula', label: 'Derivata' }] },
+            { id: '4', title: 'Risposta', description: `$$S_L = \\pi r^2(3+2\\sqrt{2})$$`, notebookExplanation: `$$\\boxed{S_L = \\pi r^2(3+2\\sqrt{2})}$$`, tags: [{ type: 'trick', label: 'Risultato' }] }
+        ]
+    },
+    {
+        id: '172-cono-circ-sup-tot',
+        title: 'Es. 172 - Sup. Tot. Min Cono Circ.',
+        category: 'Sfera',
+        difficulty: 'Difficile',
+        problemStatement: `Determina l'area minima della superficie totale di un cono retto circoscritto a una sfera di raggio $r$.`,
+        targetResults: ['$S_T = 8\\pi r^2$'],
+        variables: [
+            { name: 'Raggio Sfera', symbol: 'r', description: 'Dato', color: 'text-blue-600' },
+            { name: 'Altezza', symbol: 'h', description: 'Incognita', color: 'text-amber-600' }
+        ],
+        visualizationType: 'cone-circumscribed-sphere',
+        steps: [
+            { id: '1', title: 'Formula Sup. Tot.', description: `$S_T = \\pi y^2 + \\pi y \\ell = \\pi y(y + \\ell)$`, notebookExplanation: `$S_T = \\pi y(y+\\ell)$`, tags: [{ type: 'formula', label: 'Sup. Tot.' }] },
+            { id: '2', title: 'Derivata e minimo', description: `Dopo i calcoli, il minimo si ha per $h = 2r$`, notebookExplanation: `Min per $h = 2r$`, tags: [{ type: 'formula', label: 'Derivata' }] },
+            { id: '3', title: 'Risposta', description: `$$S_T = 8\\pi r^2$$`, notebookExplanation: `$$\\boxed{S_T = 8\\pi r^2}$$`, tags: [{ type: 'trick', label: 'Risultato' }] }
+        ]
+    },
+    {
+        id: '173-cono-circ-cilindro',
+        title: 'Es. 173 - Cono Circ. a Cilindro',
+        category: 'Cono',
+        difficulty: 'Medio',
+        problemStatement: `Determina il volume minimo di un cono retto circoscritto a un cilindro retto avente raggio $r$ e altezza $h$.`,
+        targetResults: ['$V = \\frac{1}{4}\\pi r^2 h$'],
+        variables: [
+            { name: 'Raggio Cil.', symbol: 'r', description: 'Dato', color: 'text-blue-600' },
+            { name: 'Altezza Cil.', symbol: 'h', description: 'Dato', color: 'text-amber-600' }
+        ],
+        visualizationType: 'generic-section',
+        steps: [
+            { id: '1', title: 'Setup', description: `Il cono circoscritto ha base che contiene la base del cilindro e vertice sopra.`, notebookExplanation: `Cono ⊃ Cilindro`, tags: [{ type: 'trick', label: 'Setup' }] },
+            { id: '2', title: 'Similitudine', description: `Se $H$ = altezza cono e $R$ = raggio base cono:\n$\\frac{R}{H} = \\frac{r}{H-h}$`, notebookExplanation: `$\\frac{R}{H} = \\frac{r}{H-h}$`, tags: [{ type: 'teorema', label: 'Similitudine' }] },
+            { id: '3', title: 'Volume e derivata', description: `$V = \\frac{1}{3}\\pi R^2 H$\n\nMinimizzando rispetto a $H$`, notebookExplanation: `Min per $H = 2h$`, tags: [{ type: 'formula', label: 'Volume' }] },
+            { id: '4', title: 'Risposta', description: `Il volume minimo è:\n$$V = \\frac{1}{4}\\pi r^2 h$$`, notebookExplanation: `$$\\boxed{V = \\frac{\\pi r^2 h}{4}}$$`, tags: [{ type: 'trick', label: 'Risultato' }] }
+        ]
+    },
+    {
+        id: '174-cilindro-in-cono',
+        title: 'Es. 174 - Cilindro in Cono',
+        category: 'Cono',
+        difficulty: 'Medio',
+        problemStatement: `Dato un cono retto di raggio $r$ e altezza $h$, determina raggio e altezza del cilindro inscritto avente:\na. area laterale massima\nb. volume massimo`,
+        targetResults: ['a. $R=\\frac{r}{2}, H=\\frac{h}{2}$', 'b. $R=\\frac{2r}{3}, H=\\frac{h}{3}$'],
+        variables: [
+            { name: 'Raggio Cono', symbol: 'r', description: 'Dato', color: 'text-rose-600' },
+            { name: 'Altezza Cono', symbol: 'h', description: 'Dato', color: 'text-amber-600' }
+        ],
+        visualizationType: 'generic-section',
+        steps: [
+            { id: '1', title: 'Similitudine', description: `Cilindro inscritto: $\\frac{R}{r} = \\frac{h-H}{h}$\n\nQuindi: $R = r(1 - \\frac{H}{h})$`, notebookExplanation: `$R = r(1-\\frac{H}{h})$`, tags: [{ type: 'teorema', label: 'Similitudine' }] },
+            { id: '2', title: 'a) Area Laterale', description: `$A_L = 2\\pi R H = 2\\pi r(1-\\frac{H}{h})H$\n\n$A_L' = 0 \\Rightarrow H = \\frac{h}{2}$\n$R = \\frac{r}{2}$`, notebookExplanation: `$R=\\frac{r}{2}$, $H=\\frac{h}{2}$`, tags: [{ type: 'formula', label: 'Area Lat.' }] },
+            { id: '3', title: 'b) Volume', description: `$V = \\pi R^2 H = \\pi r^2(1-\\frac{H}{h})^2 H$\n\n$V' = 0 \\Rightarrow H = \\frac{h}{3}$\n$R = \\frac{2r}{3}$`, notebookExplanation: `$R=\\frac{2r}{3}$, $H=\\frac{h}{3}$`, tags: [{ type: 'formula', label: 'Volume' }] }
+        ]
+    },
+    {
+        id: '176-solido-verde',
+        title: 'Es. 176 - Solido Verde in Sfera',
+        category: 'Figure Composte',
+        difficulty: 'Difficile',
+        problemStatement: `Determina $x$ in modo che il volume del solido colorato in verde, inscritto nella sfera avente raggio $r$, abbia volume massimo.`,
+        targetResults: ['$x = \\frac{r}{6}(\\sqrt{13}-1)$'],
+        variables: [
+            { name: 'Raggio', symbol: 'r', description: 'Dato', color: 'text-rose-600' },
+            { name: 'Distanza', symbol: 'x', description: 'Incognita', color: 'text-blue-600' }
+        ],
+        visualizationType: 'composite',
+        steps: [
+            { id: '1', title: 'Setup', description: `Il solido è un cilindro con due calotte sferiche (o coni) alle estremità.`, notebookExplanation: `Solido composto`, tags: [{ type: 'trick', label: 'Setup' }] },
+            { id: '2', title: 'Formula', description: `Volume in funzione di $x$ e derivata`, notebookExplanation: `$V(x)$`, tags: [{ type: 'formula', label: 'Volume' }] },
+            { id: '3', title: 'Risposta', description: `$$x = \\frac{r}{6}(\\sqrt{13}-1)$$`, notebookExplanation: `$$\\boxed{x = \\frac{r(\\sqrt{13}-1)}{6}}$$`, tags: [{ type: 'trick', label: 'Risultato' }] }
+        ]
+    },
+    {
+        id: '177-triangolo-rotazione',
+        title: 'Es. 177 - Triangolo Eq. Rotazione',
+        category: 'Rotazione',
+        difficulty: 'Medio',
+        problemStatement: `Sia ABC un triangolo equilatero di lato $a$. Considera un punto P sul lato AC e traccia la parallela ad AB e a BC. Determina P in modo che il volume del parallelogramma PQBR ruotato intorno ad AB sia massimo.`,
+        targetResults: ['$x = \\frac{2}{3}a$'],
+        variables: [
+            { name: 'Lato', symbol: 'a', description: 'Dato', color: 'text-rose-600' },
+            { name: 'Distanza AP', symbol: 'x', description: 'Incognita', color: 'text-blue-600' }
+        ],
+        visualizationType: 'generic-section',
+        steps: [
+            { id: '1', title: 'Volume', description: `Ponendo $\\overline{AP} = x$, il volume è:\n$$V(x) = \\frac{3}{4}\\pi(ax^2 - x^3)$$`, notebookExplanation: `$V = \\frac{3}{4}\\pi(ax^2-x^3)$`, tags: [{ type: 'formula', label: 'Volume' }] },
+            { id: '2', title: 'Derivata', description: `$V'(x) = \\frac{3}{4}\\pi(2ax - 3x^2) = 0$\n$x = \\frac{2a}{3}$`, notebookExplanation: `$x = \\frac{2a}{3}$`, tags: [{ type: 'formula', label: 'Derivata' }] },
+            { id: '3', title: 'Risposta', description: `$$x = \\frac{2}{3}a$$`, notebookExplanation: `$$\\boxed{x = \\frac{2a}{3}}$$`, tags: [{ type: 'trick', label: 'Risultato' }] }
+        ]
+    },
+    {
+        id: '178-triangolo-quadrilatero',
+        title: 'Es. 178 - Quadrilatero PQBR',
+        category: 'Rotazione',
+        difficulty: 'Medio',
+        problemStatement: `Triangolo equilatero ABC di lato $a$. Punto P su AC con proiezione Q su AB. R è dove la parallela ad AB passante per P incontra BC. Determina P per volume massimo di PQBR ruotato intorno ad AB.`,
+        targetResults: ['$x = \\frac{4}{5}a$'],
+        variables: [
+            { name: 'Lato', symbol: 'a', description: 'Dato', color: 'text-rose-600' },
+            { name: 'Distanza AP', symbol: 'x', description: 'Incognita', color: 'text-blue-600' }
+        ],
+        visualizationType: 'generic-section',
+        steps: [
+            { id: '1', title: 'Volume', description: `$$V(x) = \\frac{\\pi}{8}(6ax^2 - 5x^3)$$`, notebookExplanation: `$V = \\frac{\\pi}{8}(6ax^2-5x^3)$`, tags: [{ type: 'formula', label: 'Volume' }] },
+            { id: '2', title: 'Derivata', description: `$V' = 0 \\Rightarrow x = \\frac{4a}{5}$`, notebookExplanation: `$x = \\frac{4a}{5}$`, tags: [{ type: 'formula', label: 'Derivata' }] },
+            { id: '3', title: 'Risposta', description: `$$x = \\frac{4}{5}a$$`, notebookExplanation: `$$\\boxed{x = \\frac{4a}{5}}$$`, tags: [{ type: 'trick', label: 'Risultato' }] }
+        ]
+    },
+    {
+        id: '179-piramide-sup-lat',
+        title: 'Es. 179 - Piramide da Sup. Lat.',
+        category: 'Piramide',
+        difficulty: 'Medio',
+        problemStatement: `Tra le piramidi quadrangolari regolari la cui superficie laterale ha area $S$, determina la misura dello spigolo di base di quella avente volume massimo.`,
+        targetResults: ['$\\ell = \\sqrt[4]{\\frac{S^2}{3}}$'],
+        variables: [
+            { name: 'Sup. Laterale', symbol: 'S', description: 'Dato', color: 'text-rose-600' },
+            { name: 'Spigolo base', symbol: 'ℓ', description: 'Incognita', color: 'text-blue-600' }
+        ],
+        visualizationType: 'pyramid',
+        steps: [
+            { id: '1', title: 'Relazione', description: `$S_L = 2\\ell \\cdot a$ dove $a$ = apotema`, notebookExplanation: `$S = 2\\ell a$`, tags: [{ type: 'formula', label: 'Sup. Lat.' }] },
+            { id: '2', title: 'Volume', description: `Esprimi $V$ in funzione di $\\ell$ e deriva`, notebookExplanation: `$V(\\ell)$`, tags: [{ type: 'formula', label: 'Volume' }] },
+            { id: '3', title: 'Risposta', description: `$$\\ell = \\sqrt[4]{\\frac{S^2}{3}}$$`, notebookExplanation: `$$\\boxed{\\ell = \\sqrt[4]{\\frac{S^2}{3}}}$$`, tags: [{ type: 'trick', label: 'Risultato' }] }
+        ]
+    },
+    {
+        id: '180-piramide-volume',
+        title: 'Es. 180 - Piramide da Volume',
+        category: 'Piramide',
+        difficulty: 'Medio',
+        problemStatement: `Tra le piramidi quadrangolari regolari aventi volume $V$, determina la misura dello spigolo di base di quella avente la superficie laterale di area minima.`,
+        targetResults: ['$\\ell = \\sqrt[3]{18V^2}$'],
+        variables: [
+            { name: 'Volume', symbol: 'V', description: 'Dato', color: 'text-rose-600' },
+            { name: 'Spigolo base', symbol: 'ℓ', description: 'Incognita', color: 'text-blue-600' }
+        ],
+        visualizationType: 'pyramid',
+        steps: [
+            { id: '1', title: 'Relazione', description: `$V = \\frac{1}{3}\\ell^2 h$ → ricava $h$`, notebookExplanation: `$h = \\frac{3V}{\\ell^2}$`, tags: [{ type: 'formula', label: 'Volume' }] },
+            { id: '2', title: 'Sup. Lat.', description: `Esprimi $S_L$ in funzione di $\\ell$`, notebookExplanation: `$S_L(\\ell)$`, tags: [{ type: 'formula', label: 'Sup. Lat.' }] },
+            { id: '3', title: 'Risposta', description: `$$\\ell = \\sqrt[3]{18V^2}$$`, notebookExplanation: `$$\\boxed{\\ell = \\sqrt[3]{18V^2}}$$`, tags: [{ type: 'trick', label: 'Risultato' }] }
+        ]
+    },
+    {
+        id: '181-prisma-triangolare',
+        title: 'Es. 181 - Prisma Triangolare',
+        category: 'Prisma',
+        difficulty: 'Medio',
+        problemStatement: `Considera i prismi retti aventi come base un triangolo equilatero e volume $a^3$. Determina la misura dello spigolo di base in modo che l'area della superficie totale del prisma sia minima.`,
+        targetResults: ['$\\ell = a\\sqrt[3]{4}$'],
+        variables: [
+            { name: 'Volume', symbol: 'a³', description: 'Dato', color: 'text-rose-600' },
+            { name: 'Spigolo base', symbol: 'ℓ', description: 'Incognita', color: 'text-blue-600' }
+        ],
+        visualizationType: 'generic-section',
+        steps: [
+            { id: '1', title: 'Area base', description: `Base triangolo eq.: $A_b = \\frac{\\sqrt{3}}{4}\\ell^2$`, notebookExplanation: `$A_b = \\frac{\\sqrt{3}}{4}\\ell^2$`, tags: [{ type: 'formula', label: 'Base' }] },
+            { id: '2', title: 'Altezza', description: `$V = A_b \\cdot h = a^3$ → $h = \\frac{4a^3}{\\sqrt{3}\\ell^2}$`, notebookExplanation: `$h = \\frac{4a^3}{\\sqrt{3}\\ell^2}$`, tags: [{ type: 'formula', label: 'Altezza' }] },
+            { id: '3', title: 'Sup. Tot.', description: `$S_T = 2A_b + 3\\ell h$`, notebookExplanation: `$S_T(\\ell)$`, tags: [{ type: 'formula', label: 'Sup. Tot.' }] },
+            { id: '4', title: 'Risposta', description: `$$\\ell = a\\sqrt[3]{4}$$`, notebookExplanation: `$$\\boxed{\\ell = a\\sqrt[3]{4}}$$`, tags: [{ type: 'trick', label: 'Risultato' }] }
+        ]
+    },
+    {
+        id: '183-triangoli-isosceli',
+        title: 'Es. 183 - Triangoli Isosceli',
+        category: 'Rotazione',
+        difficulty: 'Medio',
+        problemStatement: `Tra i triangoli isosceli inscritti in una circonferenza di raggio $r$, determina:\na. quello che ruotando intorno all'altezza genera il cono di volume massimo\nb. quello che ruotando intorno alla base genera il solido di volume massimo`,
+        targetResults: ['a. $x = \\frac{4}{3}r$', 'b. $x = \\frac{5}{3}r$'],
+        variables: [
+            { name: 'Raggio', symbol: 'r', description: 'Dato', color: 'text-rose-600' },
+            { name: 'Altezza triangolo', symbol: 'x', description: 'Incognita', color: 'text-blue-600' }
+        ],
+        visualizationType: 'generic-section',
+        steps: [
+            { id: '1', title: 'Setup', description: `Triangolo isoscele inscritto nel cerchio. $x$ = altezza dal vertice alla base.`, notebookExplanation: `$x$ = altezza`, tags: [{ type: 'trick', label: 'Setup' }] },
+            { id: '2', title: 'a) Rotazione intorno altezza', description: `Genera un cono. Volume max per $x = \\frac{4}{3}r$`, notebookExplanation: `$x = \\frac{4r}{3}$`, tags: [{ type: 'formula', label: 'Caso a' }] },
+            { id: '3', title: 'b) Rotazione intorno base', description: `Genera due coni opposti. Volume max per $x = \\frac{5}{3}r$`, notebookExplanation: `$x = \\frac{5r}{3}$`, tags: [{ type: 'formula', label: 'Caso b' }] }
+        ]
+    },
+    {
+        id: '184-piramide-prisma',
+        title: 'Es. 184 - Prisma in Piramide',
+        category: 'Piramide',
+        difficulty: 'Difficile',
+        problemStatement: `Il volume di una piramide quadrangolare di altezza $h$ è $\\frac{4}{3}h^3$. Conduci un piano parallelo alla base che interseca la piramide. Determina la posizione del piano in modo che il prisma abbia volume massimo.`,
+        targetResults: ['$x = \\frac{h}{3}$'],
+        variables: [
+            { name: 'Altezza pir.', symbol: 'h', description: 'Dato', color: 'text-amber-600' },
+            { name: 'Distanza da base', symbol: 'x', description: 'Incognita', color: 'text-blue-600' }
+        ],
+        visualizationType: 'pyramid',
+        steps: [
+            { id: '1', title: 'Setup', description: `$x$ = distanza del piano dalla base della piramide.`, notebookExplanation: `$x$ = dist. piano`, tags: [{ type: 'trick', label: 'Setup' }] },
+            { id: '2', title: 'Volume prisma', description: `Per similitudine, il lato della sezione diminuisce con l'altezza.\n\nVolume prisma in funzione di $x$`, notebookExplanation: `$V_{prisma}(x)$`, tags: [{ type: 'formula', label: 'Volume' }] },
+            { id: '3', title: 'Risposta', description: `Il volume è massimo per:\n$$x = \\frac{h}{3}$$`, notebookExplanation: `$$\\boxed{x = \\frac{h}{3}}$$`, tags: [{ type: 'trick', label: 'Risultato' }] }
+        ]
+    },
+    {
+        id: '185-piramide-cilindro',
+        title: 'Es. 185 - Cilindro in Piramide',
+        category: 'Piramide',
+        difficulty: 'Difficile',
+        problemStatement: `Piramide retta a base quadrata ABCD e vertice V. Lato base = $a$, altezza = $2a$. Seziona con piano α parallelo alla base e costruisci il cilindro che ha per basi γ e la proiezione di γ su ABCD.\na. A che distanza dal vertice deve essere α per volume cilindro massimo?\nb. Verifica che anche la superficie totale è massima.`,
+        targetResults: ['a. $\\frac{4a}{3}$'],
+        variables: [
+            { name: 'Lato base', symbol: 'a', description: 'Dato', color: 'text-rose-600' },
+            { name: 'Distanza da V', symbol: 'x', description: 'Incognita', color: 'text-blue-600' }
+        ],
+        visualizationType: 'pyramid',
+        steps: [
+            { id: '1', title: 'Setup', description: `Altezza piramide = $2a$.\n$x$ = distanza del piano α dal vertice V.`, notebookExplanation: `$h = 2a$, dist = $x$`, tags: [{ type: 'trick', label: 'Setup' }] },
+            { id: '2', title: 'Similitudine', description: `Lato sezione = $\\frac{a \\cdot x}{2a} = \\frac{x}{2}$\n\nRaggio cerchio inscritto = $\\frac{x}{4}$`, notebookExplanation: `$r = \\frac{x}{4}$`, tags: [{ type: 'teorema', label: 'Similitudine' }] },
+            { id: '3', title: 'Volume cilindro', description: `Altezza cilindro = $2a - x$\n\n$V = \\pi(\\frac{x}{4})^2(2a-x) = \\frac{\\pi x^2(2a-x)}{16}$`, notebookExplanation: `$V = \\frac{\\pi x^2(2a-x)}{16}$`, tags: [{ type: 'formula', label: 'Volume' }] },
+            { id: '4', title: 'Derivata', description: `$V' = \\frac{\\pi}{16}(4ax - 3x^2) = 0$\n\n$x = \\frac{4a}{3}$`, notebookExplanation: `$x = \\frac{4a}{3}$`, tags: [{ type: 'formula', label: 'Derivata' }] },
+            { id: '5', title: 'Risposta', description: `La distanza dal vertice è:\n$$x = \\frac{4a}{3}$$`, notebookExplanation: `$$\\boxed{x = \\frac{4a}{3}}$$`, tags: [{ type: 'trick', label: 'Risultato' }] }
         ]
     }
 ];
