@@ -1,15 +1,25 @@
 import type { Metadata } from "next";
-import { Inter, Outfit } from "next/font/google";
+import { Inter, Outfit, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
+import ClientLayout from "@/components/ClientLayout";
+
 const inter = Inter({
-  variable: "--font-inter",
   subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
 });
 
 const outfit = Outfit({
-  variable: "--font-outfit",
   subsets: ["latin"],
+  variable: "--font-outfit",
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -25,9 +35,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${inter.variable} ${outfit.variable} antialiased bg-[#030303] text-white selection:bg-purple-500/30 selection:text-white`}
+        className={`${outfit.variable} ${inter.variable} ${spaceGrotesk.variable} antialiased bg-black text-white cursor-none`}
       >
-        {children}
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );
